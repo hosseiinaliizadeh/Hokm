@@ -86,7 +86,7 @@ class Cards:
                     club[0]+=cards_list[i]
                     club[1]+=1
                 elif 'diamond' in i:
-                    diamond[0]+=ca0rds_list[i]
+                    diamond[0]+=cards_list[i]
                     diamond[1]+=1
                 elif 'spade' in i:
                     spade[0]+=cards_list[i]
