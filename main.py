@@ -99,13 +99,13 @@ class run_game:
         counter = 0
         for i in self.keys_list:
             counter += 1
-            if counter<=12:
-                self.Player_cards[0].append(i)
-            elif 12<counter<=25:
+            if counter<=13:
+                self.Player_cards[0] .append(i)
+            elif counter<=26:
                 self.Player_cards[1].append(i)
-            elif 25<counter<=43:
+            elif counter<=39:
                 self.Player_cards[2].append(i)
-            elif 43<counter<=52:
+            elif counter<=52:
                 self.Player_cards[3].append(i)
     
         # print(self.Player_cards[0])
