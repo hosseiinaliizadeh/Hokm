@@ -11,20 +11,11 @@ cards_list={
 
 class Players:
     def __init__(self) -> None:
-        pass
+        self.Cards = Cards()
+
     
-    def player1(self):
-        pass
-
-    def player2(self):
-        pass
-
-    def player3(self):
-        pass
-
-    def player4(self):
-        pass
-
+    
+    
 class Cards:
 
     def __init__(self, random_card) -> None:
@@ -87,33 +78,84 @@ class Cards:
             b = listtest3[len(listtest3)-1 ]  
             return b[0]
 
+
 class run_game:
+    
+
     
     def __init__(self , keys_list , hakem , hokm) -> None:
         self.hakem = hakem
         self.hokm = hokm
         self.keys_list = keys_list 
         self.Player_cards = [[],[],[],[]]
-        
-    def run(self):
-        counter = 0
-        for i in self.keys_list:
-            counter += 1
-            if counter<=13:
-                self.Player_cards[0] .append(i)
-            elif counter<=26:
-                self.Player_cards[1].append(i)
-            elif counter<=39:
-                self.Player_cards[2].append(i)
-            elif counter<=52:
-                self.Player_cards[3].append(i)
+        self.valuee = []
+
+
     
-        # print(self.Player_cards[0])
-        # print(self.Player_cards[1])
-        # print(self.Player_cards[2])
-        # print(self.Player_cards[3])
-        return            
-                
+        
+    def playing_cards(self):
+        if self.hakem % 4 == 0:
+            counter = 0
+            for i in self.keys_list:
+                counter += 1
+                if counter<=13:
+                    self.Player_cards[0] .append(i)
+                elif counter<=26:
+                    self.Player_cards[1].append(i)
+                elif counter<=39:
+                    self.Player_cards[2].append(i)
+                elif counter<=52:
+                    self.Player_cards[3].append(i)
+        if self.hakem % 4 == 1:
+            counter = 0
+            for i in self.keys_list:
+                counter += 1
+                if counter<=13:
+                    self.Player_cards[1] .append(i)
+                elif counter<=26:
+                    self.Player_cards[2].append(i)
+                elif counter<=39:
+                    self.Player_cards[3].append(i)
+                elif counter<=52:
+                    self.Player_cards[0].append(i)
+        if self.hakem % 4 == 2:
+            counter = 0
+            for i in self.keys_list:
+                counter += 1
+                if counter<=13:
+                    self.Player_cards[2] .append(i)
+                elif counter<=26:
+                    self.Player_cards[3].append(i)
+                elif counter<=39:
+                    self.Player_cards[0].append(i)
+                elif counter<=52:
+                    self.Player_cards[1].append(i)
+        if self.hakem % 4 == 3:
+            counter = 0
+            for i in self.keys_list:
+                counter += 1
+                if counter<=13:
+                    self.Player_cards[3] .append(i)
+                elif counter<=26:
+                    self.Player_cards[0].append(i)
+                elif counter<=39:
+                    self.Player_cards[1].append(i)
+                elif counter<=52:
+                    self.Player_cards[2].append(i)
+                            
+        print(self.Player_cards)
+
+   
+    
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
 
 keys_list = list(cards_list.keys()) 
  
@@ -128,6 +170,6 @@ random.shuffle(keys_list)
 hokm = cards_obj.hokm(cards_list)
 
 run_game_obj = run_game(keys_list,hakem,hokm)
-run_game_obj.run()
-
+run_game_obj.playing_cards()
+run_game_obj.k()
 
