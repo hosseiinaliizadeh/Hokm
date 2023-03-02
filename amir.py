@@ -4,11 +4,11 @@ from sys import exit
 
 
 class Cards:
-
+    x=0
     def __init__(self, keys_list) -> None:
         self.keys_list = keys_list
         self.ace_list = ["ace-heart" , "ace-club" , "ace-diamond" , "ace-spade"]
-        self.Player_cards = [[],[],[],[]]
+        self.Player_cards = [{'heart':[],'spade':[],'club':[],'diamond':[]},{'heart':[],'spade':[],'club':[],'diamond':[]},{'heart':[],'spade':[],'club':[],'diamond':[]},{'heart':[],'spade':[],'club':[],'diamond':[]}]
         
 
 
@@ -29,7 +29,7 @@ class Cards:
         diamond = [0,0]
         spade = [0,0]
         club = [0,0]
-        if self.x == 1:
+        if self.x == 0:
             print(self.keys_list[0:5])
             hokm_is=input("choose a suite : 1.club 2.diamond 3.heart 4.spade\n")
             if hokm_is == '1': hokm_is = 'club'
@@ -61,8 +61,9 @@ class Cards:
                 if i[1]==(hakem_hand[3])[1]:
                     list_test.append(i)
             (list_test.sort(key=lambda a:a[1]))
-            hokm = list_test[len(list_test)-1 ]  
+            hokm= list_test[len(list_test)-1 ]  
             hokm = hokm[0]
+            print(hokm )
             return hokm
         
     def playing_cards(self):
@@ -70,44 +71,103 @@ class Cards:
             x = self.x
             y += 1
             if  y <=13:
-                self.Player_cards[x].append(i)
+                if 'heart' in i:
+                    self.Player_cards[x]['heart'].append(cards_list[i])
+                if 'spade' in i:
+                    self.Player_cards[x]['spade'].append(cards_list[i])
+                if 'club' in i:
+                    self.Player_cards[x]['club'].append(cards_list[i])
+                if 'diamond' in i:
+                    self.Player_cards[x]['diamond'].append(cards_list[i])
+                
             elif y <=26:
                 x = (x+1)% 4
-                self.Player_cards[x].append(i)
+                if 'heart' in i:
+                    self.Player_cards[x]['heart'].append(cards_list[i])
+                if 'spade' in i:
+                    self.Player_cards[x]['spade'].append(cards_list[i])
+                if 'club' in i:
+                    self.Player_cards[x]['club'].append(cards_list[i])
+                if 'diamond' in i:
+                    self.Player_cards[x]['diamond'].append(cards_list[i])
+
             elif y <=39:
                 x = (x+2)% 4
-                self.Player_cards[x].append(i)
+                if 'heart' in i:
+                    self.Player_cards[x]['heart'].append(cards_list[i])
+                if 'spade' in i:
+                    self.Player_cards[x]['spade'].append(cards_list[i])
+                if 'club' in i:
+                    self.Player_cards[x]['club'].append(cards_list[i])
+                if 'diamond' in i:
+                    self.Player_cards[x]['diamond'].append(cards_list[i])
+
             elif y <=52:
                 x = (x+3)% 4
-                self.Player_cards[x].append(i)
+                if 'heart' in i:
+                    self.Player_cards[x]['heart'].append(cards_list[i])
+                if 'spade' in i:
+                    self.Player_cards[x]['spade'].append(cards_list[i])
+                if 'club' in i:
+                    self.Player_cards[x]['club'].append(cards_list[i])
+                if 'diamond' in i:
+                    self.Player_cards[x]['diamond'].append(cards_list[i])
+
+        print(self.Player_cards)
+
 
 class RunGame(Cards):
-
-    def __init__(self , player_list , x) -> None:
-        self.player_list = player_list
-        self.hakem_x = x - 1
-        super().Player_cards
-        super().ace_list
-
-    def start(self):
-        i = self.player_list[self.hakem_x]
-        y = self.player_list.index(i)
-        counter = 0
-
-        while i < (self.player_list.index(y)):
-            counter += 1
-            i += 1
-
-    def auto_player(self):
-        played_cards=[]
-        if len(self.played_cards)==0 :
-            for i in played_cards[cards_obj.x]:
-                if i == []
+    def __init__(self):
+        self.zamin=[]
 
 
-    def human_player(self):
-        pass
-            
+    def Start_Game(self,h):
+        p=0
+        
+        if cards_obj.x ==0: 
+            print(cards_obj.Player_cards[0])
+            first_suit,first_value=input("Enter suit: "),int(input("Enter number: "))
+            for i in cards_obj.Player_cards[0][first_suit]:
+                if i==first_value:
+                    p+=1
+                else:
+                    pass
+            if p==0:
+                print("Eshtebahhhh")
+            else:
+                self.zamin.append(first_suit)
+                self.zamin.append(first_value)
+                print(self.zamin)
+                    
+        else:
+                min_len = 13
+                min_suit = None
+                for i in cards_obj.Player_cards[cards_obj.x].keys():
+                    if i != h:
+                        # print(i)
+                        other_suit_list =cards_obj.Player_cards[cards_obj.x][i]
+                        if 13 in other_suit_list:
+                            min_suit = i
+                            min_len = 13
+                            break
+                        else:
+                            other_len = len(other_suit_list)
+                            if other_len<min_len:
+                                min_len = other_len
+                                min_suit = i
+                                
+                # print(min_len , min_suit)
+                # print(min(cards_obj.Player_cards[cards_obj.x][min_suit]))
+                self.zamin.append(min_suit)
+                self.zamin.append(min_len)
+                print(self.zamin)
+
+        
+
+
+                    
+                
+
             
                  
                  
@@ -146,15 +206,17 @@ elif start == "yes":
     
     random.shuffle(keys_list)
     
-    cards_obj.hokm()
+    h = cards_obj.hokm()
     
     cards_obj.playing_cards()
+
+    p=RunGame()
+    p.Start_Game(h)
     
     # run_game_obj = run_game(keys_list,hakem,hokm)
     
     # run_game_obj.playing_cards()
 
 
-    runGame_obj = RunGame(player_list, x)
-    runGame_obj.start()
-    
+    # runGame_obj = RunGame(player_list, x)
+    # runGame_obj.start()
